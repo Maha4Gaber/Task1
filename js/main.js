@@ -134,6 +134,10 @@ let newcontent = [];
 
 spanarray.forEach((e) => {
   e.addEventListener("click", () => {
+    spanarray.forEach((es) => {
+      es.classList.remove("active");
+    });
+    e.classList.toggle("active");
     let filter = e.getAttribute("data-filter");
     console.log(filter);
 
