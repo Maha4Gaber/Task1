@@ -112,10 +112,12 @@ p {
 
 header {
   left: 0;
-  z-index: 2;
+  position: fixed;
+  z-index: 1000;
   width: 100%;
-  position: absolute;
   background: transparent;
+  transition: all var(--main-transition) ease-in-out;
+  border-bottom: 1px solid rgba(12, 12, 12, 0.04);
 }
 
 header .container {
@@ -141,7 +143,6 @@ header nav .togle-menu {
   font-size: 26px;
   cursor: pointer;
 }
-/* header nav .togle-menu */
 @media (min-width: 991px) {
   header nav .togle-menu {
     display: none;
@@ -154,7 +155,7 @@ header nav ul {
 header nav ul a {
   display: block;
   font-weight: bold;
-  padding: 40px 15px;
+  padding: 30px 15px 10px;
   color: white;
   text-decoration: none;
   font-size: 14px;
@@ -179,7 +180,7 @@ header nav ul a:hover {
     left: 0;
     transition: var(--main-transition);
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.548);
+    background-color: rgba(0, 0, 0);
   }
 
   header nav ul.open::before {
@@ -438,7 +439,7 @@ header nav ul a:hover {
 
 .about .feat .box {
   background: #fff;
-  box-shadow: 0px 5px 35px 0px rgb(148 146 245 / 15%);
+  box-shadow: 1px 1px 20px 0px rgb(148 146 245 / 11%);
   border-radius: 5px;
   margin-bottom: 30px;
   padding: 30px 15px;
@@ -451,6 +452,22 @@ header nav ul a:hover {
 .about .feat .box p {
   font-size: 14px;
 }
+@media (max-width: 1200px) {
+  .about .feat .container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+@media (max-width: 991px) {
+  .about .feat .container {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  .about .feat .container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
 /* end about */
 
 /* Start Quote */
@@ -531,10 +548,12 @@ header nav ul a:hover {
   gap: 40px;
 }
 .portfolio .content .box {
+  cursor: pointer;
   background-color: #1c1c1c;
   position: relative;
   transition: all var(--main-transition);
   transition-delay: 0.5s;
+  /* display: none; */
 }
 .portfolio .content .box-1 {
   grid-column: span 2;
@@ -635,6 +654,22 @@ header nav ul a:hover {
   color: white;
 }
 
+@media (max-width: 1400px) {
+  .numbers .container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+@media (max-width: 991px) {
+  .numbers .container {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  .numbers .container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
 /* end Numbers */
 
 /* start Features */
@@ -692,11 +727,15 @@ header nav ul a:hover {
 }
 .services .text {
   display: none;
+  transition: all var(--main-transition);
+  transition-delay: 0.5s;
 }
 .services .text.active {
   display: block;
   display: flex;
   gap: 40px;
+  transition: all var(--main-transition);
+  transition-delay: 0.5s;
 }
 
 .services .text p {
@@ -706,6 +745,7 @@ header nav ul a:hover {
   transition-delay: 0.5s;
   font-size: 14px;
   position: relative;
+  color: #eee;
 }
 .services .text p:first-of-type::after {
   content: "";
@@ -742,9 +782,14 @@ header nav ul a:hover {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 40px;
 }
+@media (max-width: 1400px) {
+  .services .itmes {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
 @media (max-width: 991px) {
   .services .itmes {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
 
@@ -858,7 +903,7 @@ header nav ul a:hover {
 .team .bullet {
   width: 10px;
   height: 10px;
-
+  background-color: #f24259;
   margin: 5px;
   border-radius: 501%;
 }
@@ -908,7 +953,7 @@ header nav ul a:hover {
   transition: all var(--main-transition);
 }
 .pricing .itms .box:hover {
-  box-shadow: 0px 5px 40px 0px rgba(223, 214, 255);
+  box-shadow: 0px 5px 40px 0px rgb(223 214 255 / 17%);
 }
 .pricing .itms .box h4 {
   font-size: 25px;
@@ -1061,6 +1106,18 @@ header nav ul a:hover {
   text-align: center;
 }
 
+.testimonails .bullet {
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  border-radius: 50%;
+}
+.testimonails .bullet:hover {
+  background-color: var(--m-color);
+}
+.testimonails .bullet.active {
+  background-color: var(--m-color);
+}
 .testimonails .box .image {
   width: 85px;
   height: 85px;
@@ -1103,16 +1160,21 @@ header nav ul a:hover {
   gap: 40px;
   width: 100%;
 }
-@media (max-width: 991px) {
+@media (max-width: 1200px) {
   .news .itms {
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 991px) {
+  .news .itms {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+/* @media (max-width: 767px) {
   .news .itms {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
-}
+} */
 
 .news .itms .box {
   position: relative;
@@ -1137,6 +1199,7 @@ header nav ul a:hover {
   padding: 10px 15px;
   text-align: center;
 }
+
 .news .itms .box .date a {
   font-size: 12px;
   font-weight: 700;
@@ -1145,6 +1208,14 @@ header nav ul a:hover {
 .news .box .text {
   text-align: center;
   padding: 30px 0;
+}
+@media (max-width: 991px) {
+  .news .itms {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+  .news .box .text {
+    text-align: left;
+  }
 }
 .news .box .text .tag {
   display: block;
@@ -1325,6 +1396,14 @@ header nav ul a:hover {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 40px;
 }
+@media (max-width: 1200px) {
+  .information .container {
+    grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+  }
+  .information .box p {
+    font-size: 14px;
+  }
+}
 @media (max-width: 991px) {
   .information .container {
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
@@ -1341,6 +1420,8 @@ header nav ul a:hover {
   border-radius: 5px;
   cursor: pointer;
   padding: 30px;
+  display: flex;
+  align-items: center;
 }
 .information .box i {
   color: #fff;
@@ -1348,6 +1429,7 @@ header nav ul a:hover {
   margin-right: 30px;
   height: 100%;
 }
+
 .information .box h6 {
   color: #fff;
 }
@@ -1361,10 +1443,6 @@ footer {
   text-align: center;
   background-color: #111;
 }
-/* footer.container
-{
-  max-width: 540px;
-} */
 footer .logo {
   padding: 15px 0;
   width: 100px;

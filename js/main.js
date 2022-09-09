@@ -21,11 +21,67 @@ let typed = new Typed(".typing", {
   loop: true,
 });
 
+// nav bar
+let section = document.querySelectorAll("section");
+let navlinks = document.querySelectorAll("nav ul li a ");
+let header = document.querySelector("header");
+let logo = document.querySelector("header img");
+
 // Mission
 
 let Skills = document.querySelector(".about .content");
 
 window.onscroll = () => {
+  // nav bar
+  section.forEach((sec) => {
+    let top = window.scrollY;
+    let offset = sec.offsetTop - 150;
+    let hieght = sec.offsetHeight;
+    let id = sec.getAttribute("id");
+    if (top > offset && top < offset + hieght) {
+      navlinks.forEach((link) => {
+        link.classList.remove("active");
+
+        let n = document.querySelector("nav ul li [href*=" + id + "]");
+        n.classList.add("active");
+        // n
+      });
+    }
+    if (top > 350) {
+      logo.src = "imgs/logo-dark .png";
+      header.style.cssText = `
+    background-color: rgb(255, 255, 255);`;
+      toggle.style.cssText = `color: rgb(0, 0, 0);`;
+      navlinks.forEach((link) => {
+        link.style.cssText = `color: rgb(0, 0, 0);`;
+        if (link.classList.contains("active")) {
+          link.style.cssText = `color: var(--m-color);`;
+        }
+      });
+      if (links.classList.contains("open")) {
+        navlinks.forEach((l) => {
+          l.style.cssText = `color: #fff;`;
+          if (l.classList.contains("active")) {
+            l.style.cssText = `color: var(--m-color);`;
+          }
+        });
+      }
+    } else {
+      logo.src = "imgs/logo-light.png";
+      header.style.cssText = `left: 0;
+    `;
+      toggle.style.cssText = `color: var(--m-color);`;
+      navlinks.forEach((link) => {
+        link.style.cssText = `color: rgb(255, 255, 255);`;
+        if (link.classList.contains("active")) {
+          link.style.cssText = `color: var(--m-color);`;
+        }
+      });
+    }
+  });
+
+  // Mission
+
   let SofsetTop = Skills.offsetTop;
 
   let SosetH = Skills.offsetHeight;
@@ -63,144 +119,35 @@ function startCount(el) {
   el.textContent = 0;
   let count = setInterval(() => {
     el.textContent++;
-
     if (el.textContent == goal) {
       clearInterval(count);
     }
-  }, 2000 / goal);
+  }, 200 / goal);
 }
 
 // Portfolio;
 
-let portcontant = [
-  ` 
-        <div class="box ">
-          <img src="imgs/port/1.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/1"><i class="fa fa-image"></i></a>
-          </div>
-        </div>
-        <div class="box box-1">
-          <img src="imgs/port/2.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/1"><i class="fa fa-image"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="imgs/port/3.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/2"><i class="fa fa-image"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="imgs/port/4.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/4"><i class="fa fa-image"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="imgs/port/5.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/5"><i class="fa fa-image"></i></a>
-          </div>
-        </div>
-        <div class="box box-1">
-          <img src="imgs/port/6.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/6"><i class="fa fa-image"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="imgs/port/7.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/7"><i class="fa fa-image"></i></a>
-          </div>
-        </div>`,
-  ` 
-        <div class="box">
-          <img src="imgs/port/3.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/2"><i class="fa fa-image"></i></a>
-          </div>
-        </div>
-        <div class="box box-1">
-          <img src="imgs/port/6.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/6"><i class="fa fa-image"></i></a>
-          </div>
-        </div>`,
-  `<div class="box box-1">
-          <img src="imgs/port/2.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/1"><i class="fa fa-image"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="imgs/port/5.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/5"><i class="fa fa-image"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="imgs/port/7.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/7"><i class="fa fa-image"></i></a>
-          </div>
-        </div>`,
-  `<div class="box ">
-          <img src="imgs/port/1.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/1"><i class="fa fa-image"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="imgs/port/4.jpg" alt="">
-          <div class="text">
-            <h6>Crearive Design</h6>
-            <p>Work description here</p>
-            <a href="imgs/port/4"><i class="fa fa-image"></i></a>
-          </div>
-        </div>`,
-];
 let spanarray = document.querySelectorAll(".portfolio .links span");
-let newcontent = document.querySelector(".portfolio .content");
-let boxs = document.querySelector(".portfolio .content .box");
+let content = document.querySelector(".portfolio .content");
+let boxs = document.querySelectorAll(".portfolio .content .box");
+let newcontent = [];
 
-for (let i = 0; i < 4; i++) {
-  spanarray[i].addEventListener("click", () => {
-    spanarray.forEach((e) => {
-      e.classList = "";
+spanarray.forEach((e) => {
+  e.addEventListener("click", () => {
+    let filter = e.getAttribute("data-filter");
+    console.log(filter);
+
+    boxs.forEach((el) => {
+      if (el.classList.contains(filter)) {
+        el.style.cssText = `display: flex;`;
+      } else {
+        el.style.cssText = `display: none;`;
+      }
     });
-    spanarray[i].classList.toggle("active");
-    newcontent.innerHTML = portcontant[i];
   });
-}
+});
+
+// services;
 
 let itms = document.querySelectorAll(".services .itmes .itme");
 let text = document.querySelectorAll(".services .text");
@@ -216,6 +163,7 @@ for (let i = 0; i < 4; i++) {
     itms.forEach((el) => {
       el.classList = "itme";
     });
+
     itms[i].classList.toggle("active");
     rewrite(i);
   });
